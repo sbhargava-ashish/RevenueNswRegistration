@@ -3,6 +3,8 @@ This project can be used to Create person , vehicles and register them against e
 
 Application port is 8088 in application.properties.
 
+Project use Spring web and Spring data with in memory h2 database.
+
 Application also has swagger configuration which can be accessed after application startup.
 
 Swagger link : http://localhost:8088/swagger-ui.html
