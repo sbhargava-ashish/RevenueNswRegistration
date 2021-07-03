@@ -1,9 +1,11 @@
 package com.revenue.nsw.rego.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +13,7 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name= "person")
-public class Person {
+public class Person implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,8 +23,14 @@ public class Person {
 
     private String age;
 
-    @OneToMany(
-            mappedBy = "person"
-    )
+    public Person() {}
+
+    public Person(String name, String age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    @OneToMany
+    @JoinColumn(name = "person_id")
     private List<Vehicle> vehicles = new ArrayList<>();
 }

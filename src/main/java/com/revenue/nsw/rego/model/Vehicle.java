@@ -1,33 +1,29 @@
-package com.revenue.nsw.rego.entity;
+package com.revenue.nsw.rego.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
-import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Getter
 @Setter
-@Entity
-@Table(name = "vehicle",
-        uniqueConstraints={@UniqueConstraint(columnNames={"REGO_NUMBER"})
-})
+@ToString
 public class Vehicle implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
-    @Column(name = "REGO_NUMBER")
+    @NotNull
     private String regoNumber;
 
+    @NotNull
     private String brand;
 
-    public Vehicle (){}
+    private String personId;
 
     public Vehicle(String regoNumber, String brand) {
         this.regoNumber = regoNumber;
         this.brand = brand;
     }
 
+    
 }
